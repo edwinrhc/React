@@ -1,5 +1,5 @@
 import {describe, expect, test} from "vitest";
-import {add, multiply, substract} from "./math.helper.ts";
+import {add, divide, multiply, substract} from "./math.helper.ts";
 
 describe('add', () => {
 
@@ -39,5 +39,17 @@ describe('multiply', () => {
         const result = multiply(a, b);
         console.log(`Resultado de multiplicar ${a} * ${b} = ${result}`)
         expect(result).toBe(a * b);
+    })
+})
+// ----------------------------------------------------------------------------------------------------------------------
+describe('divide', () => {
+    test('should divide numbers', () => {
+        //Arrange
+        const a = 2;
+        const b = 4;
+
+        const result = divide(a, b);
+        console.log(`Resultado de multiplicar ${a} / ${b} = ${result}`)
+        expect(result).toBe(a / b);
     })
 })
