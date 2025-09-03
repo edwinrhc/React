@@ -1,19 +1,18 @@
 import {mockGifs} from "./mock-data/gifs.mock.ts";
+import {CustomHeader} from "./shared/components/CustomHeader.tsx";
 
 export const GifsApp = () => {
     return (
         <>
             {/*header*/}
-            <div className="content-center">
-                <h1>Buscador de Gifs</h1>
-                <p>Descubre y comparte el gif Perfecto</p>
-            </div>
+            <CustomHeader />
+
             {/* Search*/}
             <div className="search-container">
                 <input type="text" placeholder="Buscar Gifs"/>
                 <button>Buscar</button>
             </div>
-            {/*    Búsqueda previas*/}
+            {/*    Búsqueda previas */}
             <div className="previous-searches">
                 <h2>Búsquedas previas</h2>
                 <ul className="previous-searches-list">
