@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 interface Props {
     placeHolder?: string;
@@ -8,18 +8,33 @@ interface Props {
 
 export const SearchBar = ( { placeHolder = 'Buscar', onQuery }: Props) => {
 
-    const [query, setQuery] = useState('')
+    const [query, setQuery] = useState('');
+
+    useEffect(() => {
+
+        const timeoutId = setTimeout(() => {
+            onQuery(query);
+        }, 700);
+
+
+        return () => {
+            // console.log('componente desmontado');
+            clearTimeout(timeoutId);
+        };
+    }, [query, onQuery] );
 
     const handleSearch = () => {
         onQuery(query);
-        setQuery('');
+        // setQuery('');
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if(event.key === 'Enter') {
             handleSearch();
         }
-    }
+    };
+
+
 
     return (
         <div className="search-container">
