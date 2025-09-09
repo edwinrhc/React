@@ -1,4 +1,6 @@
-import type { Gif} from "../../mock-data/gifs.mock.ts";
+
+import type {Gif} from "../interfaces/gif.interface.ts";
+
 import type {FC} from "react";
 
 interface Props {
