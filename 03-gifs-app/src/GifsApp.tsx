@@ -9,7 +9,6 @@ import type {Gif} from "./gifs/interfaces/gif.interface.ts";
 export const GifsApp = () => {
 
     const [gifs, setGifs] = useState<Gif[]>([])
-
     const [previousTerms, setPreviousTerms] = useState<string[]>([])
 
     const handleTermClicked = (term: string) => {
@@ -17,7 +16,6 @@ export const GifsApp = () => {
     }
 
     const handleSearch = async (query: string) => {
-
         query = query.trim().toLowerCase();
         if (query.length === 0) return;
         if (previousTerms.includes(query)) return;
