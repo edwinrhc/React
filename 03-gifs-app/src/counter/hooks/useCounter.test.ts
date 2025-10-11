@@ -1,4 +1,4 @@
-import { describe, expect, test} from "vitest";
+import {   describe, expect, test} from "vitest";
 import {useCounter} from "./useCounter.tsx";
 import {act, renderHook} from "@testing-library/react";
 
@@ -26,6 +26,7 @@ describe('useCounter', () => {
         expect(result.current.counter).toBe(11);
     });
 
+    // TEst
     test('should decrement counter when handleAdd is called', () => {
         const { result } = renderHook(() => useCounter());
         act(() => {
