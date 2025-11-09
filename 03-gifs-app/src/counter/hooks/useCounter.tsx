@@ -19,7 +19,7 @@ export const useCounter = (initialValue :number = 10) => {
         counter,
         // Methods / Actions
         handleAdd,
-        handleSubstract,
+        handleSubtract: handleSubstract,
         handleReset,
     }
 };
