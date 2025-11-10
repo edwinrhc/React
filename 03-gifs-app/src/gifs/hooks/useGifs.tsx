@@ -24,7 +24,6 @@ export const useGifs = () => {
             return;
         }
 
-
         const gifs = await getGifsByQuery(term);
         setGifs(gifs);
     }
