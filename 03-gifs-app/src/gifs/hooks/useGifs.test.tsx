@@ -1,6 +1,8 @@
-import { describe, expect, test } from "vitest";
+import {describe, expect, test, vi} from "vitest";
 import {useGifs} from "./useGifs.tsx";
 import {act, renderHook} from "@testing-library/react";
+import * as gifActions from "../actions/get-gifs-by-query.action.ts";
+
 
 
 describe('useGifs', () => {
@@ -32,5 +34,38 @@ describe('useGifs', () => {
 
         expect(result.current.gifs.length).toBe(10);
     })
+
+    test('should return a list of gifs from cache', async() => {
+        const { result } = renderHook(() => useGifs());
+        await act(async () => {
+            await  result.current.handleTermClicked('goku');
+        });
+
+        expect(result.current.gifs.length).toBe(10);
+
+        vi.spyOn(gifActions, 'getGifsByQuery')
+            .mockRejectedValue(new Error('This is my custom error'))
+
+        await act(async () => {
+            await  result.current.handleTermClicked('goku');
+        });
+
+        expect(result.current.gifs.length).toBe(10);
+
+    });
+
+    test('should return no more than 8 previous terms', async() => {
+        const { result } = renderHook(() => useGifs());
+
+        vi.spyOn(gifActions, 'getGifsByQuery')
+            .mockResolvedValue([]);
+        await act( async() => {
+            await result.current.handleTermClicked('goku1');
+        });
+
+        console.log(result.current.previousTerms);
+
+    })
+
 
 });
